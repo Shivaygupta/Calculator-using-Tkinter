@@ -1,0 +1,164 @@
+from tkinter import Text,Tk
+from tkinter import*
+from tkinter import messagebox
+main=Tk()
+main.title("calculator")
+main.geometry('350x400')
+data=StringVar()
+val=""
+a=0
+def b1_isclicked():
+    global val
+    val= val + "7"
+    data.set(val)
+def b2_isclicked():
+    global val
+    val= val + "8"
+    data.set(val)
+def b3_isclicked():
+    global val
+    val= val + "9"
+    data.set(val)
+def b4_isclicked():
+    global val
+    val= val + "4"
+    data.set(val)
+def b5_isclicked():
+    global val
+    val= val + "5"
+    data.set(val)
+def b6_isclicked():
+    global val
+    val= val + "6"
+    data.set(val)
+def b7_isclicked():
+    global val
+    val= val + "1"
+    data.set(val)
+def b8_isclicked():
+    global val
+    val= val + "2"
+    data.set(val)
+def b9_isclicked():
+    global val
+    val= val + "3"
+    data.set(val)
+def b14_isclicked():
+    global val
+    val= val + "0"
+    data.set(val)
+def plus():
+    global a
+    global val
+    global operation
+    a=int(val)
+    operation="+"
+    val=val+"+"
+    data.set(val)
+def sub():
+    global a
+    global val
+    global operation
+    a=int(val)
+    operation="-"
+    val=val+"-"
+    data.set(val)
+def mul():
+    global a
+    global val
+    global operation
+    a=int(val)
+    operation="*"
+    val=val+"*"
+    data.set(val)
+def div():
+    global a
+    global val
+    global operation
+    a=int(val)
+    operation="/"
+    val=val+"/"
+    data.set(val)
+def cancel():
+    global a
+    global val
+    global operation
+    a=0
+    operation=""
+    val=""
+    data.set(val)
+def equal():
+    global a
+    global val
+    global operation
+    val1=val
+    if operation=="+":
+        x=int(val1.split("+")[1])
+        c=a+x
+        data.set(c)
+        val=str(c)
+    elif operation=="-":
+        x=int(val1.split("-")[1])
+        c=a-x
+        data.set(c)
+        val=str(c)
+    elif operation=="*":
+        x=int(val1.split("*")[1])
+        c=a*x
+        data.set(c)
+        val=str(c)
+    elif operation=="/":
+        x=int(val1.split("/")[1])
+        if x==0:
+            messagebox.showerror("error","reminder is zero not allowed")
+            a=0
+            val=""
+            data.set(val)
+        else:
+            c=int(a/x)
+            data.set(c)
+lb=Label(main,text="calculator",font=("arival bold",20),fg="green",anchor=SE,textvariable=data)
+lb.pack(expand=True,fill="both")
+#e1=Text(main,width=40,background="yellow",foreground="blue",height=2,textvariable=data)
+#e1.pack(expand=True,fill="both")
+bt1=Frame(main)
+bt1.pack(expand=True,fill="both")
+bt2=Frame(main)
+bt2.pack(expand=True,fill="both")
+bt3=Frame(main)
+bt3.pack(expand=True,fill="both")
+bt4=Frame(main)
+bt4.pack(expand=True,fill="both")
+b1=Button(bt1,text="7",font=("verdana",22),relief=GROOVE,border=0,command=b1_isclicked)
+b1.pack(side=LEFT,expand=True,fill="both")
+b2=Button(bt1,text="8",font=("verdana",22),relief=GROOVE,border=0,command=b2_isclicked)
+b2.pack(side=LEFT,expand=True,fill="both")
+b3=Button(bt1,text="9",font=("verdana",22),relief=GROOVE,border=0,command=b3_isclicked)
+b3.pack(side=LEFT,expand=True,fill="both")
+b4=Button(bt1,text="-",font=("verdana",22),relief=GROOVE,border=0,command=sub)
+b4.pack(side=LEFT,expand=True,fill="both")
+b5=Button(bt2,text="4",font=("verdana",22),relief=GROOVE,border=0,command=b4_isclicked)
+b5.pack(side=LEFT,expand=True,fill="both")
+b6=Button(bt2,text="5",font=("verdana",22),relief=GROOVE,border=0,command=b5_isclicked)
+b6.pack(side=LEFT,expand=True,fill="both")
+b7=Button(bt2,text="6",font=("verdana",22),relief=GROOVE,border=0,command=b6_isclicked)
+b7.pack(side=LEFT,expand=True,fill="both")
+b8=Button(bt2,text="+",font=("verdana",22),relief=GROOVE,border=0,command=plus)
+b8.pack(side=LEFT,expand=True,fill="both")
+b9=Button(bt3,text="1",font=("verdana",22),relief=GROOVE,border=0,command=b7_isclicked)
+b9.pack(side=LEFT,expand=True,fill="both")
+b10=Button(bt3,text="2",font=("verdana",22),relief=GROOVE,border=0,command=b8_isclicked)
+b10.pack(side=LEFT,expand=True,fill="both")
+b11=Button(bt3,text="3",font=("verdana",22),relief=GROOVE,border=0,command=b9_isclicked)
+b11.pack(side=LEFT,expand=True,fill="both")
+b12=Button(bt3,text="x",font=("verdana",22),relief=GROOVE,border=0,command=mul)
+b12.pack(side=LEFT,expand=True,fill="both")
+b13=Button(bt4,text="c",font=("verdana",22),relief=GROOVE,border=0,command=cancel)
+b13.pack(side=LEFT,expand=True,fill="both")
+b14=Button(bt4,text="0",font=("verdana",22),relief=GROOVE,border=0,command=b14_isclicked)
+b14.pack(side=LEFT,expand=True,fill="both")
+b15=Button(bt4,text="/",font=("verdana",22),relief=GROOVE,border=0,command=div)
+b15.pack(side=LEFT,expand=True,fill="both")
+b16=Button(bt4,text="=",font=("verdana",22),relief=GROOVE,border=0,command=equal)
+b16.pack(side=LEFT,expand=True,fill="both")
+main.mainloop()
